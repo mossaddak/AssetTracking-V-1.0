@@ -22,9 +22,17 @@
                     
                     <div class="text-center px-5">
                         <a href="#!" class="btn text-center text-light d-block my-2" data-bs-toggle="modal" data-bs-target="#ProfilePictureModal">Change Image</a>
-                        <a href="" class="btn text-center text-light d-block my-2">Add Asset</a>
+
+                        {% if request.user.user_type == 'Company' %}
+                        <a href="" class="btn text-center text-light d-block my-2" data-bs-toggle="modal" data-bs-target="#companyModal">Add Asset</a>
+                        {% endif %}
                     </div>
+
+                    <!-- profile picture modal -->
                     {% include "profile_picture_modal.html" %}
+
+                    <!-- company add asset modal -->
+                    {% include "company_asset_add_modal.html" %}
                 </div>
                 
             </div>
