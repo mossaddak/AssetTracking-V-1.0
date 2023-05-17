@@ -47,6 +47,18 @@
                         <input class="profile_form_input form-control" name="username" value="{{ account.username }}" placeholder="Username" type="text">
                         <p class="form_error">{{form.username.errors}}</p>
                     </div>
+
+                    <!-- first name -->
+                    <div class="profile_form_input_container  my-1">
+                        <input class="profile_form_input form-control" name="first_name" type="text" value="{{ account.first_name }}" placeholder="First Name">
+                        <!-- <p class="form_error" style="color: red; font-size:14px;">{{form.last_name.errors}}</p> -->
+                    </div>
+    
+                    <!-- last name -->
+                    <div class="profile_form_input_container  my-1">
+                        <input class="profile_form_input form-control" name="last_name" type="text" value="{{ account.last_name }}" placeholder="Last Name">
+                        <!-- <p class="form_error" style="color: red; font-size:14px;">{{form.last_name.errors}}</p> -->
+                    </div>
     
                     <!-- email -->
                     <div class="profile_form_input_container  my-1">

@@ -26,7 +26,7 @@ from django.shortcuts import get_object_or_404
 
 @never_cache
 @not_logged_in_required
-def SingUp(request):
+def SingUp(request): 
  
 
     form = SingUpForm()

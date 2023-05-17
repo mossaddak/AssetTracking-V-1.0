@@ -7,9 +7,10 @@ from .models import(
 
 #singup form
 class SingUpForm(forms.ModelForm):
+    user_type = forms.CharField(max_length=30, required=False)
     class Meta:
         model = User
-        fields = ("username", "first_name","last_name", "email", "password",)
+        fields = ("username", "first_name","last_name", "email", "password","user_type")
 
 
     def clean_username(self): 
@@ -25,7 +26,7 @@ class SingUpForm(forms.ModelForm):
 
 
     def clean_email(self):
-        email = self.cleaned_data.get('email')
+        email = self.cleaned_data.get('email')  
         model = self.Meta.model
         user = model.objects.filter(email__iexact=email)
         if user.exists(): 
@@ -34,6 +35,12 @@ class SingUpForm(forms.ModelForm):
         return self.cleaned_data.get('email')
 
 
+    def clean_user_type(self):
+        user_type = self.cleaned_data.get('user_type')
+        print("User type======================================>")
+        if not user_type:
+            raise forms.ValidationError("Please select a UserType.")
+        return user_type
  
 
     def clean_password(self):
@@ -43,6 +50,8 @@ class SingUpForm(forms.ModelForm):
         if password != confirm_password:
             raise forms.ValidationError("Password do not match!")
         return self.cleaned_data.get('password')
+    
+    
 
 
 #login form
@@ -59,7 +68,7 @@ class UserProfileUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ("username", "email")
+        fields = ("first_name", "last_name", "username", "email")
 
 
 

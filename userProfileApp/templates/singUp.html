@@ -15,7 +15,7 @@
     
                 <!-- username -->
                 <div class="form_content_container">
-                    <label>Company Name</label>
+                    <label>Username</label>
                     <input {% if form.is_bound %} value="{{ form.username.value }}" {% endif %} type="text" name="username"required>
                     <p class="form_error" style="color: red; font-size:14px;">{{form.username.errors}}</p>
                 </div>
@@ -25,6 +25,15 @@
                     <label>Email</label>
                     <input {% if form.is_bound %} value="{{ form.email.value }}" {% endif %} type="email" name="email" required>
                     <p class="form_error" style="color: red; font-size:14px;">{{form.email.errors}}</p>
+                </div>
+
+                <!-- user type -->
+                <div class="form_content_container">
+                    <label class="">User Type</label>
+                    <select class="form-select" required name="user_type">
+                        <option value="Company">Company</option>
+                        <option value="Employee">Employee</option>
+                    </select>
                 </div>
     
                 <!-- password -->
