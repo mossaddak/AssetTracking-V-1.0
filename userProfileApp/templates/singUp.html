@@ -15,7 +15,7 @@
     
                 <!-- username -->
                 <div class="form_content_container">
-                    <label>Username</label>
+                    <label>Company Name</label>
                     <input {% if form.is_bound %} value="{{ form.username.value }}" {% endif %} type="text" name="username"required>
                     <p class="form_error" style="color: red; font-size:14px;">{{form.username.errors}}</p>
                 </div>
@@ -42,7 +42,7 @@
                 </div>
     
                 <div class="form_content_container">
-                    <a href="#">Al ready have account?</a>
+                    <a href="{% url 'Login' %}">All ready have account?</a>
                 </div>
     
                 <div class="form_content_container">

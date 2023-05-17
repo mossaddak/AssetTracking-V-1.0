@@ -8,14 +8,10 @@ from django.dispatch import receiver
 # Create your models here.
 
 class User(AbstractUser):
-    email = models.EmailField(max_length=50, unique=True, error_messages={"unique":"The email must be unique!"})
-    profile_image = models.ImageField(null = True,blank = True,upload_to = "0_DynamicImages/profile-picturs")
+    email = models.EmailField(max_length=50, unique=True, error_messages={"unique":"The email must be unique!"}, verbose_name="Company email")
+    profile_image = models.ImageField(null = True,blank = True,upload_to = "0_DynamicImages/profile-picturs", verbose_name="Company image")
     phone_number = models.CharField(max_length=250, null=True, blank=True)
-    post_office = models.CharField(max_length=250, null=True, blank=True)
-    thana = models.CharField(max_length=250, null=True, blank=True)
-    district = models.CharField(max_length=250, null=True, blank=True)
-    zipcode = models.CharField(max_length=50, null=True, blank=True)
-    address = models.CharField(max_length=264, null=True, blank=True)
+    
     REQUIRES_FIELDS = ["email"]
     objects = CustomeUserManager()
 
@@ -38,6 +34,10 @@ class User(AbstractUser):
             value = getattr(self, field_name)
             if value is None or value=='':
                 return False
+            
+    
+    class Meta:
+        verbose_name_plural = 'Company Name'
 
 
 class Profile(models.Model):

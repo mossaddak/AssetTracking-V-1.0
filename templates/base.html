@@ -45,7 +45,7 @@
               {{request.user.username}}
             </a>
             <ul class="dropdown-menu ms-auto" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'UserProfile' %}">Profile</a></li>
               <li><a class="dropdown-item" href="{% url 'Logout' %}">Logout</a></li>
             </ul>
             {% else %}
