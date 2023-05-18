@@ -14,4 +14,8 @@ urlpatterns = [
 
     #company asset
     path('', include('companyAsset.urls')),
+
+    #employee
+    path('', include('employee.urls')),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

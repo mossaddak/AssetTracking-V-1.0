@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'userProfileApp', #custom
     'companyAsset', #custom
+    'employee', #custom
 ]
 
 MIDDLEWARE = [

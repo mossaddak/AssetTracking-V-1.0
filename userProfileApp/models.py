@@ -5,6 +5,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
+
+
 # Create your models here.
 
 class User(AbstractUser):
@@ -12,6 +14,11 @@ class User(AbstractUser):
     profile_image = models.ImageField(null = True,blank = True,upload_to = "0_DynamicImages/profile-picturs", verbose_name="Company image")
 
     user_type = models.CharField(max_length=30,blank=True, null=True)
+
+    employee = models.ManyToManyField('self', blank=True)  # Many-to-many relationship with the User model
+
+
+    
     
     REQUIRES_FIELDS = ["email"]
     objects = CustomeUserManager()

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Employee{% endblock %}
+
+{% block content %}
+<section class="py-5 justify-content-center">
+    <div class="container pb-5">
+        {% if messages %}
+        {% include 'message.html' %}
+        {% endif %}
+
+        <div class="mt-2">
+            <form action="{% url 'add-employee' %}">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Add Emplye</label>
+                    <input type="text" name="employee" class="form-control" id="exampleFormControlInput1" placeholder="Employe username">
+                </div>
+                <button class="btn text-light">Add Employee</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

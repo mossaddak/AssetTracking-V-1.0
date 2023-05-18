@@ -173,7 +173,7 @@ def UserProfile(request):
     context = {
         "account":account, 
         "form":form,
-        "allAsset":CompanyAsset.objects.all()
+        "allAsset":request.user.CompanyAssetUserRelatedname.all()
     } 
     return render(request, 'profile.html', context)
 
