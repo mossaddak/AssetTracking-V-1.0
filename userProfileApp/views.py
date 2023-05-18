@@ -21,13 +21,15 @@ from django.views.decorators.cache import never_cache
 import uuid 
 from .helpers import send_forget_password_mail
 from django.shortcuts import get_object_or_404
+from companyAsset.models import(
+    CompanyAsset
+)
 
 # Create your views here.
 
 @never_cache
 @not_logged_in_required
 def SingUp(request): 
- 
 
     form = SingUpForm()
 
@@ -171,6 +173,7 @@ def UserProfile(request):
     context = {
         "account":account, 
         "form":form,
+        "allAsset":CompanyAsset.objects.all()
     } 
     return render(request, 'profile.html', context)
 

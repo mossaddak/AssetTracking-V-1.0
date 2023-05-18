@@ -1,0 +1,20 @@
+<!-- Modal -->
+<div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="assetModal">Asset List</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex">
+            {% for asset in allAsset %}
+            <div class="asset_item m-1">{{asset.name}} 
+                <a href="{% url 'delete-asset' asset.pk %}">
+                    <i class="fas fa-trash-alt btn asset_delete_icon"></i>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>

@@ -17,3 +17,14 @@ nav, footer{
 .navbar-brand img{
     width: 180px;
 }
+.asset_item{
+    background-color: #7952b3;
+    color: white;
+    border-radius: 6px;
+    padding: 7px 14px;
+}
+.asset_delete_icon{
+    background-color: rgb(178, 9, 9);
+    padding:5px;
+    color: white;
+}
