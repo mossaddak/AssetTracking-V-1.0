@@ -1,4 +1,4 @@
-# <a href="">Live Link
+# <a href="https://assettrackingv10.pythonanywhere.com/">Live Link
 
 # Project Overview
 
@@ -14,17 +14,17 @@ There is two types of account:
 
 For <b>Create Account</b> go to this link:
 
-    http://127.0.0.1:8000/SingUp/
+    https://assettrackingv10.pythonanywhere.com/SingUp/
 
 <b>Note:</b> You have to select you're employee or company whether. The company has some special permission that don't to employees.
 
 For <b>Login</b> go to this link:
 
-    http://127.0.0.1:8000/Login/    
+    https://assettrackingv10.pythonanywhere.com/Login/    
 
 For <b>Profile</b> go to this link:
 
-    http://127.0.0.1:8000/UserProfile/
+    https://assettrackingv10.pythonanywhere.com/UserProfile/
 
 
 
