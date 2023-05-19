@@ -1,0 +1,36 @@
+<!-- Modal -->
+<div class="modal fade" id="HistoryModal{{employee.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">All History</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Username</th>
+              <th scope="col">Device</th>
+              <th scope="col">Condition</th>
+              <th scope="col">Return</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for history in device_history %}
+            <tr>
+              <td>{{history.username}}</td>
+              <td>{{history.asset}}</td>
+              <td>{{history.condition}}</td>
+              <td>{{history.is_return}}</td>
+              <td>{{history.created_date}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,8 @@ from companyAsset.models import (
     CompanyAsset
 )
 from .models import(
-    EmployeeV
+    EmployeeV,
+    AssetReturn
 )
 
 
@@ -58,19 +59,19 @@ def AddEmployee(request):
         messages.warning(request, "you don't have permission for this page.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+
 @login_required(login_url='Login')
 def EmployeeProfile(request, pk):
-
     
     try:
         employee = get_object_or_404(User,pk=pk)
         search_asset = request.POST.get('asset_item')
         allAsset = request.user.CompanyAssetUserRelatedname.all()
         
-
-        
-
         is_employee_taken = EmployeeV.objects.filter(username=employee.username,asset=search_asset)
+
+        all_device_history = AssetReturn.objects.filter(username=employee.username)
+        print("History=======================================>", all_device_history)
 
         if not is_employee_taken:
             if search_asset:                                                                                    
@@ -78,7 +79,7 @@ def EmployeeProfile(request, pk):
                 if asset:
                     taking_time = request.POST.get('start_date')
                     end_time = request.POST.get('end_date')
-                    print("Taking time================================>", taking_time)
+                    
                     EmployeeV.objects.create(
                         username=employee.username,
                         asset=asset.name,
@@ -98,7 +99,8 @@ def EmployeeProfile(request, pk):
             context = {
                 "employee":employee,
                 "allAsset":allAsset,
-                "employee_taken_asset":EmployeeV.objects.filter(username=employee.username)
+                "employee_taken_asset":EmployeeV.objects.filter(username=employee.username),
+                "device_history":all_device_history
             }
         else:
             context = {
@@ -108,3 +110,28 @@ def EmployeeProfile(request, pk):
         return render (request,'employee_profile.html', context)
     except:
         return render (request,'employee_profile.html')
+
+
+@login_required(login_url='Login')
+def ReturnDevice(request, pk):
+    employee_v = EmployeeV.objects.get(pk=pk)
+    employee_username = employee_v.username
+    user = User.objects.get(username=employee_username)
+    
+    employee_device = employee_v.asset
+    allAsset = request.user.CompanyAssetUserRelatedname.all()
+    user_device = allAsset.filter(name=employee_device, employee_list=user)
+
+    AssetReturn.objects.create(
+        username=employee_username,
+        asset = employee_device,
+        condition="Good",
+        is_return=True
+    )
+    user_device.get().employee_list.remove(user) 
+
+    print("user_device=================================>", user_device)
+    employee_v.delete()
+    messages.success(request, "Successfully device returned.")
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

@@ -16,4 +16,15 @@ class EmployeeV(models.Model):
 
     def __str__(self):
         return f"{self.pk}.{self.username}"
+    
+class AssetReturn(models.Model):
+    username = models.CharField(max_length=250, null=True, blank=True)
+    asset = models.CharField(max_length=250, null=True, blank=True)
+    condition = models.CharField(max_length=250, null=True, blank=True)
+    created_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    is_return = models.BooleanField(default=False, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.pk}.{self.username}"
+
 

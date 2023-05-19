@@ -6,13 +6,29 @@
           <h5 class="modal-title" id="AllTakenDevicesModal">All Devicess User taken</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body d-flex">
-          {% for device in employee_taken_asset %}
-            <div class="m-2 btn text-light">
-                {{device.asset}}
-            </div>
-            
-          {% endfor %}
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Device</th>
+                <th scope="col">Start</th>
+                <th scope="col">End</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for device in employee_taken_asset %}
+              <tr>
+                <td class="">{{device.asset}}</td>
+                <td>{{device.taking_time}}</td>
+                <td>{{device.back_time}}</td>
+                <td><a href="{% url 'return-device' device.pk %}" class="btn text-light"><i class="fas fa-trash-alt"></i></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
         </div>
       </div>
     </div>

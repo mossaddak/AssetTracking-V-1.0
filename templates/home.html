@@ -37,7 +37,7 @@
             </tbody>
           </table>
     </div>
-    {% elif request.is_authenticated %}
+    {% elif request.user.is_authenticated %}
     <h1>Wellcome to the portal</h1>
     {% else %}
     <h1>Please log into your account</h1>
