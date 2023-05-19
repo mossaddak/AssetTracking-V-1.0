@@ -4,6 +4,9 @@ from userProfileApp.models import (
 )
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from employee.models import(
+    EmployeeV
+)
 
 # Create your views here.
 
@@ -15,7 +18,8 @@ def Home(request):
 
         context={
             "employees":employees,
-            "allAsset":request.user.CompanyAssetUserRelatedname.all()
+            "allAsset":request.user.CompanyAssetUserRelatedname.all(),
+            #"employee_taken_asset":EmployeeV.objects.filter(username=employee.username)
         }
     else:
         

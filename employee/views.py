@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -60,33 +60,45 @@ def AddEmployee(request):
 
 @login_required(login_url='Login')
 def EmployeeProfile(request, pk):
+
+    
     try:
         employee = get_object_or_404(User,pk=pk)
         search_asset = request.POST.get('asset_item')
         allAsset = request.user.CompanyAssetUserRelatedname.all()
-        print(employee.username)
+        
 
-        is_employee_taken = EmployeeV.objects.filter(asset=search_asset)
+        
+
+        is_employee_taken = EmployeeV.objects.filter(username=employee.username,asset=search_asset)
 
         if not is_employee_taken:
             if search_asset:                                                                                    
                 asset = allAsset.get(name=search_asset)
                 if asset:
-                    asset.employee_list.add(employee)
+                    taking_time = request.POST.get('start_date')
+                    end_time = request.POST.get('end_date')
+                    print("Taking time================================>", taking_time)
                     EmployeeV.objects.create(
                         username=employee.username,
-                        asset=asset.name
+                        asset=asset.name,
+                        taking_time = taking_time,
+                        back_time = end_time
                     )
+                    asset.employee_list.add(employee)
                     messages.success(request, "successfully asset shared")
+                    return redirect("/")
                 else:
                     messages.warning(request, "don't have any asset with this name")
+                    return redirect("/")
         else:
             messages.warning(request, "this user already have this device")
         
         if request.user in employee.employee.all():
             context = {
                 "employee":employee,
-                "allAsset":allAsset
+                "allAsset":allAsset,
+                "employee_taken_asset":EmployeeV.objects.filter(username=employee.username)
             }
         else:
             context = {

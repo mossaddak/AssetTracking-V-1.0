@@ -11,8 +11,8 @@ from companyAsset.models import(
 class EmployeeV(models.Model):
     username = models.CharField(max_length=250, null=True, blank=True)
     asset = models.CharField(max_length=50, blank=True, null=True)
-    taking_time = models.DateField(null=True, blank=True)
-    back_time = models.DateField(null=True, blank=True)
+    taking_time = models.DateTimeField(null=True, blank=True)
+    back_time = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.pk}.{self.username}"

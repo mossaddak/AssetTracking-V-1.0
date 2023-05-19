@@ -4,6 +4,9 @@
 
 {% block content %}
 <section class="py-5 justify-content-center">
+    {% if messages %}
+    {% include 'message.html' %}
+    {% endif %}
     {% if request.user.user_type == "Company" %}
     <div class="container pb-5">
         <h3 class="mb-5">Employee List <hr></h3>
@@ -22,7 +25,13 @@
                     <td><a href="{% url 'employee-profile' employee.pk %}">{{employee.username}}</a></td>
                     <td>{{employee.email}}</td>
                     <td>{{employee.user_type}}</td>
-                    <td>Devices</td>
+                    <td>
+                      {% for asset in allAsset %}
+                      {% if employee in asset.employee_list.all %}
+                          {{ asset.name }},
+                      {% endif %}
+                      {% endfor %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

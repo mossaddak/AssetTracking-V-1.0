@@ -29,14 +29,18 @@
                     </div>
                     
                     <div class="text-center px-5">
-                        <a href="" class="btn text-center text-light d-block my-2" data-bs-toggle="modal" data-bs-target="#assetModal">Assets</a>
+                        <a href="" class="btn text-center text-light d-block my-2" data-bs-toggle="modal" data-bs-target="#AllTakenDevicesModal">Taken Devices</a>
                         <a href="" class="btn text-center text-light d-block my-2" data-bs-toggle="modal" data-bs-target="#AssingAssetModal{{employee.pk}}">Give Devices</a>
                     </div>
 
                     <!-- company asset modal -->
                     {% include "asset_list_modal.html" %}
+                    
                     <!-- asset assing modal -->
                     {% include "assing_asset_modal.html" %}
+
+                    <!-- all teken asset -->
+                    {% include "all_taken_devices.html" %}
                 </div>
                 
             </div>

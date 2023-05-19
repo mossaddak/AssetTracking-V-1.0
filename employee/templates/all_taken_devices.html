@@ -1,0 +1,19 @@
+<!-- Modal -->
+<div class="modal fade" id="AllTakenDevicesModal" tabindex="-1" aria-labelledby="AllTakenDevicesModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="AllTakenDevicesModal">All Devicess User taken</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex">
+          {% for device in employee_taken_asset %}
+            <div class="m-2 btn text-light">
+                {{device.asset}}
+            </div>
+            
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>

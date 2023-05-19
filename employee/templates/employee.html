@@ -24,7 +24,7 @@
             <hr>
             <div class="d-flex">
                 {% for employee in employees %}
-                <a href="{% url 'employee-profile' employee.pk %}" class="employee_div">{{employee.username}}</a>
+                <a href="{% url 'employee-profile' employee.pk %}" class="employee_div ms-2 text-light">{{employee.username}}</a>
                 {% endfor %}
             </div>
         </div>
