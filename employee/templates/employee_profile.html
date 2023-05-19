@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<section class="py-5 justify-content-center">
+    <div class="container pb-5">
+        
+
+
+        <div class="row justify-content-center">
+            {% if messages %}
+            {% include 'message.html' %}
+            {% endif %}
+
+            <!-- dashboard left side -->
+
+            {% if request.user in employee.employee.all %}
+            <div class="profile_left col-10 col-md-10 col-lg-4 py-5 mx-2 my-2">
+                <div class="profile_image d-flex justify-content-center">
+                    <img src="{{ employee.get_profile_picture }}" style="width:250px;height:250;" class="d-block" alt="profile picture">
+                </div>
+                <div class="profile_left_body">
+                    <div class="my-4">
+                        <h3 class="text-center profile_heading my-4">{{ employee.first_name }} {{ employee.last_name }}</h3>
+                        <h6 class="text-center">
+                            {{employee.user_type}}
+                        </h6>
+                    </div>
+                    
+                    <div class="text-center px-5">
+                        <a href="" class="btn text-center text-light d-block my-2" data-bs-toggle="modal" data-bs-target="#assetModal">Assets</a>
+                        <a href="" class="btn text-center text-light d-block my-2" data-bs-toggle="modal" data-bs-target="#AssingAssetModal{{employee.pk}}">Give Devices</a>
+                    </div>
+
+                    <!-- company asset modal -->
+                    {% include "asset_list_modal.html" %}
+                    <!-- asset assing modal -->
+                    {% include "assing_asset_modal.html" %}
+                </div>
+                
+            </div>
+            {% else %}
+            <h1>You entered wrong info</h1>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+{% endblock %}

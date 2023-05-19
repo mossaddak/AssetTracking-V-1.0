@@ -4,8 +4,34 @@
 
 {% block content %}
 <section class="py-5 justify-content-center">
+    {% if request.user.user_type == "Company" %}
     <div class="container pb-5">
-        <h1>Home</h1>
+        <h3 class="mb-5">Employee List <hr></h3>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Type</th>
+                <th scope="col">Devices</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                <tr>
+                    <td><a href="{% url 'employee-profile' employee.pk %}">{{employee.username}}</a></td>
+                    <td>{{employee.email}}</td>
+                    <td>{{employee.user_type}}</td>
+                    <td>Devices</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
     </div>
+    {% elif request.is_authenticated %}
+    <h1>Wellcome to the portal</h1>
+    {% else %}
+    <h1>Please log into your account</h1>
+    {% endif %}
 </section>
 {% endblock %}

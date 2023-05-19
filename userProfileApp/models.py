@@ -7,11 +7,12 @@ from django.dispatch import receiver
 
 
 
+
 # Create your models here.
 
 class User(AbstractUser):
-    email = models.EmailField(max_length=50, unique=True, error_messages={"unique":"The email must be unique!"}, verbose_name="Company email")
-    profile_image = models.ImageField(null = True,blank = True,upload_to = "0_DynamicImages/profile-picturs", verbose_name="Company image")
+    email = models.EmailField(max_length=50, unique=True, error_messages={"unique":"The email must be unique!"})
+    profile_image = models.ImageField(null = True,blank = True,upload_to = "0_DynamicImages/profile-picturs")
 
     user_type = models.CharField(max_length=30,blank=True, null=True)
 
@@ -21,7 +22,7 @@ class User(AbstractUser):
     
     
     REQUIRES_FIELDS = ["email"]
-    objects = CustomeUserManager()
+    objects = CustomeUserManager() 
 
     def __str__(self):
         return f"{self.pk}.{self.username}"    

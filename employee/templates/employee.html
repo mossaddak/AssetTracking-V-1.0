@@ -18,6 +18,16 @@
                 <button class="btn text-light">Add Employee</button>
             </form>
         </div>
+
+        <div class="mt-3">
+            <h3>Employee list</h3>
+            <hr>
+            <div class="d-flex">
+                {% for employee in employees %}
+                <a href="{% url 'employee-profile' employee.pk %}" class="employee_div">{{employee.username}}</a>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

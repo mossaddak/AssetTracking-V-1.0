@@ -22,9 +22,21 @@ nav, footer{
     color: white;
     border-radius: 6px;
     padding: 7px 14px;
+    text-decoration: none;
 }
 .asset_delete_icon{
     background-color: rgb(178, 9, 9);
     padding:5px;
     color: white;
+}
+.employee_div{
+    background-color: #7952b3;
+    color: white;
+    border-radius: 6px;
+    padding: 7px 14px;
+    text-decoration: none;
+}
+.asset_container{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 6px;
 }

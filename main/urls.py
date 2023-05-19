@@ -4,6 +4,7 @@ from .import views
 
 
 urlpatterns = [
-    path('', views.Home, name="home")
+    path('', views.Home, name="home"),
+    path('assing-asset/<int:pk>/', views.AssingAsset, name="assing-asset"),
 ]
   

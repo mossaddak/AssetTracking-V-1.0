@@ -5,4 +5,5 @@ from .import views
 urlpatterns = [
     path('employee/', views.Employee, name="employee"),
     path('add-employee/', views.AddEmployee, name="add-employee"),
+    path('employee-profile/<int:pk>/', views.EmployeeProfile, name="employee-profile"),
 ]
