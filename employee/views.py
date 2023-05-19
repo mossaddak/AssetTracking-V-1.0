@@ -65,9 +65,8 @@ def EmployeeProfile(request, pk):
         search_asset = request.POST.get('asset_item')
         allAsset = request.user.CompanyAssetUserRelatedname.all()
         print(employee.username)
-        is_employee_taken = EmployeeV.objects.filter(username=employee.username, asset=search_asset)
 
-        print("iS========================================>", is_employee_taken)
+        is_employee_taken = EmployeeV.objects.filter(asset=search_asset)
 
         if not is_employee_taken:
             if search_asset:                                                                                    
@@ -76,7 +75,7 @@ def EmployeeProfile(request, pk):
                     asset.employee_list.add(employee)
                     EmployeeV.objects.create(
                         username=employee.username,
-                        asset=asset
+                        asset=asset.name
                     )
                     messages.success(request, "successfully asset shared")
                 else:
