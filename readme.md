@@ -26,10 +26,7 @@ For <b>Profile</b> go to this link:
 
     http://127.0.0.1:8000/UserProfile/
 
-<b>Company Profile:</b> Comapany profile have some extra permission like:
-    1. Comany can add Asset
-    2. Can see asset list
-    3. Can add employee
+
 
 # Employee profile
 
@@ -41,6 +38,13 @@ You can see the employee profile from home page where employee information prese
 
 <b>Return History:</b> In this modal, you can see all history of the device about when returned.
 
+# Company profile
+
+Comapany profile have some extra permission like:
+
+    1. Comany can add Asset
+    2. Can see asset list
+    3. Can add employee
 
 
 
