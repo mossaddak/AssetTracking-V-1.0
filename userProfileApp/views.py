@@ -51,7 +51,7 @@ def SingUp(request):
     context = {
         "form": form,
     }
-    return render(request,'singup.html', context)  
+    return render(request,'singUp.html', context)  
 
 
 @never_cache
